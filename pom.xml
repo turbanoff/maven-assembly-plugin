@@ -374,7 +374,7 @@ under the License.
 
       <properties>
         <test.remote.repo.url>file://${project.build.testOutputDirectory}/remote-repository</test.remote.repo.url>
-        <it.streamLogs>false</it.streamLogs>
+        <it.streamLogs>true</it.streamLogs>
         <testVersion>${project.version}</testVersion>
         <useJvmChmod>false</useJvmChmod>
       </properties>
