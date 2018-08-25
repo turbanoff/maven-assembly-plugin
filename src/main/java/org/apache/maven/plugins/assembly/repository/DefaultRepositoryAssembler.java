@@ -19,15 +19,6 @@ package org.apache.maven.plugins.assembly.repository;
  * under the License.
  */
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.filter.AndArtifactFilter;
 import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
@@ -51,6 +42,10 @@ import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
 import org.codehaus.plexus.logging.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * @author Jason van Zyl
@@ -161,7 +156,7 @@ public class DefaultRepositoryAssembler
 
         if ( ( includes == null ) || includes.isEmpty() )
         {
-            List<String> patterns = new ArrayList<String>();
+            List<String> patterns = new ArrayList<>();
 
             Set<Artifact> projectArtifacts = project.getDependencyArtifacts();
 
@@ -244,7 +239,7 @@ public class DefaultRepositoryAssembler
     protected Map<String, GroupVersionAlignment> createGroupVersionAlignments( List<GroupVersionAlignment> versionAlignments )
     // CHECKSTYLE_ON: LineLength
     {
-        Map<String, GroupVersionAlignment> groupVersionAlignments = new HashMap<String, GroupVersionAlignment>();
+        Map<String, GroupVersionAlignment> groupVersionAlignments = new HashMap<>();
 
         if ( versionAlignments != null )
         {

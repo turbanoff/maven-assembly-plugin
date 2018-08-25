@@ -19,14 +19,6 @@ package org.apache.maven.plugins.assembly.archive.task;
  * under the License.
  */
 
-import java.io.File;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
 import org.apache.maven.model.Dependency;
@@ -41,11 +33,7 @@ import org.apache.maven.plugins.assembly.model.UnpackOptions;
 import org.apache.maven.plugins.assembly.utils.AssemblyFormatUtils;
 import org.apache.maven.plugins.assembly.utils.FilterUtils;
 import org.apache.maven.plugins.assembly.utils.TypeConversionUtils;
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.ProjectBuilder;
-import org.apache.maven.project.ProjectBuildingException;
-import org.apache.maven.project.ProjectBuildingRequest;
-import org.apache.maven.project.ProjectBuildingResult;
+import org.apache.maven.project.*;
 import org.apache.maven.shared.artifact.filter.resolve.ScopeFilter;
 import org.apache.maven.shared.artifact.filter.resolve.transform.ArtifactIncludeFilterTransformer;
 import org.codehaus.plexus.archiver.Archiver;
@@ -53,6 +41,10 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.components.io.functions.InputStreamTransformer;
 import org.codehaus.plexus.interpolation.fixed.FixedStringSearchInterpolator;
 import org.codehaus.plexus.logging.Logger;
+
+import java.io.File;
+import java.nio.charset.Charset;
+import java.util.*;
 
 /**
  * @version $Id$
@@ -64,7 +56,7 @@ public class AddDependencySetsTask
 
     static
     {
-        final List<String> nonArch = new ArrayList<String>();
+        final List<String> nonArch = new ArrayList<>();
 
         nonArch.add( "pom" );
 
@@ -283,7 +275,7 @@ public class AddDependencySetsTask
     Set<Artifact> resolveDependencyArtifacts( final DependencySet dependencySet )
         throws InvalidAssemblerConfigurationException
     {
-        final Set<Artifact> dependencyArtifacts = new LinkedHashSet<Artifact>();
+        final Set<Artifact> dependencyArtifacts = new LinkedHashSet<>();
         if ( resolvedArtifacts != null )
         {
             dependencyArtifacts.addAll( resolvedArtifacts );

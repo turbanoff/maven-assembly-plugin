@@ -19,16 +19,6 @@ package org.apache.maven.plugins.assembly.utils;
  * under the License.
  */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.resolver.filter.AndArtifactFilter;
 import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
@@ -39,6 +29,8 @@ import org.apache.maven.shared.artifact.filter.PatternIncludesArtifactFilter;
 import org.apache.maven.shared.artifact.filter.StatisticsReportingArtifactFilter;
 import org.apache.maven.shared.artifact.filter.resolve.ScopeFilter;
 import org.codehaus.plexus.logging.Logger;
+
+import java.util.*;
 
 /**
  * @version $Id$
@@ -54,7 +46,7 @@ public final class FilterUtils
                                                     final List<String> excludes, final boolean actTransitively,
                                                     final Logger logger )
     {
-        final List<PatternIncludesArtifactFilter> allFilters = new ArrayList<PatternIncludesArtifactFilter>();
+        final List<PatternIncludesArtifactFilter> allFilters = new ArrayList<>();
 
         final AndArtifactFilter filter = new AndArtifactFilter();
 
@@ -75,7 +67,7 @@ public final class FilterUtils
             allFilters.add( excludeFilter );
         }
 
-        Set<MavenProject> result = new LinkedHashSet<MavenProject>( projects.size() );
+        Set<MavenProject> result = new LinkedHashSet<>( projects.size() );
         for ( MavenProject project : projects )
         {
             final Artifact artifact = project.getArtifact();
@@ -102,7 +94,7 @@ public final class FilterUtils
                                         final ArtifactFilter... additionalFilters )
         throws InvalidAssemblerConfigurationException
     {
-        final List<ArtifactFilter> allFilters = new ArrayList<ArtifactFilter>();
+        final List<ArtifactFilter> allFilters = new ArrayList<>();
 
         final AndArtifactFilter filter = new AndArtifactFilter();
 
@@ -211,7 +203,7 @@ public final class FilterUtils
      */
     public static ScopeFilter newScopeFilter( final Collection<String> rootScopes )
     {
-        Set<String> scopes = new HashSet<String>();
+        Set<String> scopes = new HashSet<>();
         
         for ( String rootScope : rootScopes )
         {

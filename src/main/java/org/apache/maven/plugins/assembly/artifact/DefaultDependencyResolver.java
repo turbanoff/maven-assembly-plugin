@@ -19,11 +19,6 @@ package org.apache.maven.plugins.assembly.artifact;
  * under the License.
  */
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugins.assembly.AssemblerConfigurationSource;
 import org.apache.maven.plugins.assembly.archive.ArchiveCreationException;
@@ -38,6 +33,11 @@ import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
 import org.codehaus.plexus.util.StringUtils;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author jdcasey
@@ -57,7 +57,7 @@ public class DefaultDependencyResolver
                                                                     List<DependencySet> dependencySets )
         throws DependencyResolutionException
     {
-        Map<DependencySet, Set<Artifact>> result = new LinkedHashMap<DependencySet, Set<Artifact>>();
+        Map<DependencySet, Set<Artifact>> result = new LinkedHashMap<>();
 
         for ( DependencySet dependencySet : dependencySets )
         {
@@ -80,7 +80,7 @@ public class DefaultDependencyResolver
                                                                     List<DependencySet> dependencySets )
         throws DependencyResolutionException
     {
-        Map<DependencySet, Set<Artifact>> result = new LinkedHashMap<DependencySet, Set<Artifact>>();
+        Map<DependencySet, Set<Artifact>> result = new LinkedHashMap<>();
 
         for ( DependencySet dependencySet : dependencySets )
         {
